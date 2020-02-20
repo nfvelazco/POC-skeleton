@@ -1,0 +1,19 @@
+{
+  "name": "skeleton-ej",
+  "version": "0.0.1",
+  "description": "Primer esqueleto de proyecto",
+  "main": "app.js",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "create-skeleton": "node ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "skeleton"
+  ],
+  "author": "Nicolas Federico Velazco",
+  "license": "ISC"
+}
