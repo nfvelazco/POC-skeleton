@@ -1,6 +1,6 @@
 {
   "name": "skeleton-ej",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Primer esqueleto de proyecto",
   "main": "app.js",
   "dependencies": {
@@ -8,12 +8,20 @@
   },
   "devDependencies": {},
   "scripts": {
-    "create-skeleton": "node ./app.js",
+    "skeleton-ej": "node ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "skeleton"
   ],
   "author": "Nicolas Federico Velazco",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfvelazco/POC-skeleton.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nfvelazco/POC-skeleton/issues"
+  },
+  "homepage": "https://github.com/nfvelazco/POC-skeleton#readme"
 }
