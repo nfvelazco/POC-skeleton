@@ -20,6 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/nfvelazco/POC-skeleton.git"
   },
+  "bin": "./app.js",
   "bugs": {
     "url": "https://github.com/nfvelazco/POC-skeleton/issues"
   },
