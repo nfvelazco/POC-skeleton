@@ -21,7 +21,7 @@ const createFile = (filePath,fileContent) => {
     });
 }
 
-const PATH = `${process.cwd}/themp/carpeta/`;
+const PATH = `${process.cwd()}/themp/carpeta/`;
 const CONTENT = 'Contenido uno';
 
 createDir(PATH);
