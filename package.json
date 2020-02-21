@@ -1,8 +1,8 @@
 {
-  "name": "skeleton-ej",
-  "version": "0.0.4",
+  "name": "poc-skeleton",
+  "version": "0.0.8",
   "description": "Primer esqueleto de proyecto",
-  "main": "app.js",
+  "main": "./app.js",
   "dependencies": {
     "fs": "0.0.1-security"
   },
