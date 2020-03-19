@@ -4,7 +4,7 @@
 const UTILS = './utils';
 const copyDir = require(`${UTILS}/dirFiles`);
 const PARAMETERS = require(`${UTILS}/parametrosEspeciales`);
-const COLOR = require(`${UTILS}/consoleColors`);
+const consola = require(`${UTILS}/consola`);
 
 const ParametersArray = process.argv.slice(2);
 let ParametersApp ={
@@ -12,12 +12,12 @@ let ParametersApp ={
 	specials: ParametersArray.filter(param => param.includes('--'))
 }
 
-console.log(COLOR.FgGreen,"Parametros especiales:");
-console.log(ParametersApp.specials);
-console.log(COLOR.Reset);
-console.log(COLOR.FgGreen,"Nombre de la App:")
-console.log(ParametersApp.nameApp);
-console.log(COLOR.Reset);
+consola.info("Parametros especiales:");
+consola.info(ParametersApp.specials);
+
+consola.info("Nombre de la App:")
+consola.info(ParametersApp.nameApp);
+
 
 const LOCAL_PATH = `${process.cwd()}/${ParametersApp.nameApp}/`;
 
@@ -28,14 +28,11 @@ ParametersApp.specials.forEach(param=>{
 				FOLDER_TEMPLATE_TO_CREATE= 'cra';
 			break;
 		case PARAMETERS.HELP:
-				console.log(COLOR.FgCyan,'Activaste Help papa!!!');
-				console.log(COLOR.Reset);
+				consola.info('Activaste Help papa!!!');
 			break;
 		default:
 			const msgError = `Parametro especial incorrecto: ${param}, por favor chequear con --help`;
-			console.log(COLOR.BgRed, msgError)
-			console.log(COLOR.Reset);
-			//throw msgError;
+			consola.error(msgError)
 			break
 	}
 	
@@ -43,6 +40,6 @@ ParametersApp.specials.forEach(param=>{
 
 if(FOLDER_TEMPLATE_TO_CREATE != null){
 const TEMPLATE_PATH = `${__dirname}/templates/${FOLDER_TEMPLATE_TO_CREATE}/`;
-console.log('Ruta Template:',TEMPLATE_PATH);
+consola.log('Ruta Template:',TEMPLATE_PATH);
 // copyDir(TEMPLATE_PATH,LOCAL_PATH);
 }
