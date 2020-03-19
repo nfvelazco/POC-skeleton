@@ -2,7 +2,7 @@
 
 // 'use strict';
 const UTILS = './utils';
-const copyDir = require(`${UTILS}/dirFiles`);
+const TemplateGenerator = require(`${UTILS}/dirFiles`);
 const PARAMETERS = require(`${UTILS}/parametrosEspeciales`);
 const consola = require(`${UTILS}/consola`);
 
@@ -39,7 +39,7 @@ ParametersApp.specials.forEach(param=>{
 });
 
 if(FOLDER_TEMPLATE_TO_CREATE != null){
-const TEMPLATE_PATH = `${__dirname}/templates/${FOLDER_TEMPLATE_TO_CREATE}/`;
-consola.log('Ruta Template:',TEMPLATE_PATH);
-// copyDir(TEMPLATE_PATH,LOCAL_PATH);
+	const TEMPLATE_PATH = `${__dirname}/templates/${FOLDER_TEMPLATE_TO_CREATE}/`;
+	consola.log('Ruta Template:',TEMPLATE_PATH);
+	TemplateGenerator(TEMPLATE_PATH,LOCAL_PATH);
 }
