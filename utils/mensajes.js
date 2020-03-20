@@ -23,7 +23,7 @@ descripción:
     ${COMMAND(PARAM.CRA, 'Crea una app en ReactJs.')}
     ${COMMAND(PARAM.HELP, 'Ayuda.')}
 
-    Sitio: ${README_PACKAGE}
+Sitio: ${README_PACKAGE}
 `;
 
 module.exports.HELP_MSG = HELP_MSG;
