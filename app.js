@@ -2,7 +2,7 @@
 
 // 'use strict';
 const UTILS = './utils';
-const TemplateGenerator = require(`${UTILS}/dirFiles`);
+const TemplateGenerator = require(`${UTILS}/importTemplate`);
 const PARAMETERS = require(`${UTILS}/parametrosEspeciales`);
 const consola = require(`${UTILS}/consola`);
 const mensaje = require(`${UTILS}/mensajes`);
