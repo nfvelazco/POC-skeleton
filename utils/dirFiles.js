@@ -44,13 +44,11 @@ const copy = function(src, dest) {
     consola.info(`${dest} - ok.`);
 	var oldFile = fs.createReadStream(src);
 	var newFile = fs.createWriteStream(dest);
-    // util.pump(oldFile, newFile);
     oldFile.pipe(newFile);
     oldFile.on(`end`,(e)=>{
         newFile.close();
         oldFile.close();
     });
-    //consola.warning(`copiado...`)
 };
 
 const copyDir = function(src, dest) {
