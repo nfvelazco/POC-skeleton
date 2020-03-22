@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
+const consola = require(`./consola`);
 
-var mkdir = function(dir) {
+const mkdir = function(dir) {
 	// making directory without exception if exists
 	try {
 		fs.mkdirSync(dir, 0755);
 	} catch(e) {
-        rmdir(NEW_PATH);
+        rmdir(dir);
 		if(e.code != "EEXIST") {
             
 			throw e;
@@ -15,7 +16,7 @@ var mkdir = function(dir) {
 	}
 };
 
-var rmdir = function(dir) {
+const rmdir = function(dir) {
 	if (path.existsSync(dir)) {
 		var list = fs.readdirSync(dir);
 		for(var i = 0; i < list.length; i++) {
@@ -34,38 +35,40 @@ var rmdir = function(dir) {
 		}
 		fs.rmdirSync(dir);
 	} else {
-		console.warn("warn: " + dir + " not exists");
+		consola.warning(`warn: ${dir} not exists`);
 	}
 };
 
 
-var copy = function(src, dest) {
-    console.log(`* Copiando ${src} a ${dest}-------`);
+const copy = function(src, dest) {
+    consola.info(`${dest} - ok.`);
 	var oldFile = fs.createReadStream(src);
 	var newFile = fs.createWriteStream(dest);
-    // util.pump(oldFile, newFile);
     oldFile.pipe(newFile);
     oldFile.on(`end`,(e)=>{
         newFile.close();
         oldFile.close();
-        console.log(`copiado...`)
-    })
+    });
 };
 
-var copyDir = function(src, dest) {
+const copyDir = function(src, dest) {
 	mkdir(dest);
 	var files = fs.readdirSync(src);
 	for(var i = 0; i < files.length; i++) {
 		var current = fs.lstatSync(path.join(src, files[i]));
 		if(current.isDirectory()) {
-			copyDir(path.join(src, files[i]), path.join(dest, files[i]));
+            copyDir(path.join(src, files[i]), path.join(dest, files[i]));
 		} else if(current.isSymbolicLink()) {
 			var symlink = fs.readlinkSync(path.join(src, files[i]));
-			fs.symlinkSync(symlink, path.join(dest, files[i]));
+            fs.symlinkSync(symlink, path.join(dest, files[i]));
 		} else {
-			copy(path.join(src, files[i]), path.join(dest, files[i]));
+            copy(path.join(src, files[i]), path.join(dest, files[i]));
 		}
-	}
+    }
+    return files.length;
 };
-
-module.exports = copyDir;
+const run = (src,dest)=>{
+    copyDir(src,dest);
+    consola.warning(`Fin de la operación. A tirar alto codigo amigo...`);//${copyDir(src,dest)} archivos copiados.`)
+}
+module.exports = run;
