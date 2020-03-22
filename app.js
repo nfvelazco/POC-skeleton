@@ -32,6 +32,9 @@ ParametersApp.specials.forEach(param=>{
 		case PARAMETERS.HELP:
 				consola.info(mensaje.HELP_MSG);
 			break;
+		case PARAMETERS.VERSION:
+				consola.info(mensaje.VERSION);
+			break;
 		default:
 			consola.error(mensaje.PARAM_NOT_FOUND(param));
 			break
