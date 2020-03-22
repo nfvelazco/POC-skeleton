@@ -44,7 +44,6 @@ ParametersApp.specials.forEach(param=>{
 
 if(FOLDER_TEMPLATE_TO_CREATE !== null){
 	const TEMPLATE_PATH = `${__dirname}/templates/${FOLDER_TEMPLATE_TO_CREATE}`;
-	consola.log('Ruta Template:',TEMPLATE_PATH);
 	TemplateGenerator(TEMPLATE_PATH,LOCAL_PATH);
 } else if (ParametersApp.specials.length === 0){
 	consola.warning(`No se recibieron parametros especiales para: ${ParametersApp.nameApp}. Vea --help`);

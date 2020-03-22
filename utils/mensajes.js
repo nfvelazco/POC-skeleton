@@ -23,7 +23,6 @@ const HELP_MSG = `usage: ${PACKAGE_NAME} <name_app> | ${ALL_PARAMS}
 descripción:
     ${COMMAND(PARAM.CRA, 'Crea una app en ReactJs.')}
     ${COMMAND(PARAM.HELP, 'Ayuda.')}
-
     Sitio: ${PACKAGE_README}
 `;
 
