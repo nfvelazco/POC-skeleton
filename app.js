@@ -1,46 +1,20 @@
 #!/usr/bin/env node
 
-// 'use strict';
+'use strict';
 const UTILS = './utils';
 const TemplateGenerator = require(`${UTILS}/importTemplate`);
 const PARAMETERS = require(`${UTILS}/parametrosEspeciales`);
 const consola = require(`${UTILS}/consola`);
-const mensaje = require(`${UTILS}/mensajes`);
-const URL_TEMPLATE = require(`${UTILS}/rutasTemplate`);
 
 const ParametersArray = process.argv.slice(2);
 let ParametersApp ={
 	nameApp: ParametersArray[0],
-	specials: ParametersArray.filter(param => param.includes('--'))
+	specials: PARAMETERS.GET_LIST_PARAMS(ParametersArray)
 }
-
-// consola.info("Parametros especiales:");
-// consola.info(ParametersApp.specials);
-
-// consola.info("Nombre de la App:")
-// consola.info(ParametersApp.nameApp);
-
 
 const LOCAL_PATH = `${process.cwd()}/${ParametersApp.nameApp}/`;
 
-let FOLDER_TEMPLATE_TO_CREATE = null;
-ParametersApp.specials.forEach(param=>{
-	switch(param){
-		case PARAMETERS.CRA:
-				FOLDER_TEMPLATE_TO_CREATE= URL_TEMPLATE.CRA;
-			break;
-		case PARAMETERS.HELP:
-				consola.info(mensaje.HELP_MSG);
-			break;
-		case PARAMETERS.VERSION:
-				consola.info(mensaje.VERSION);
-			break;
-		default:
-			consola.error(mensaje.PARAM_NOT_FOUND(param));
-			break
-	}
-	
-});
+let FOLDER_TEMPLATE_TO_CREATE = PARAMETERS.GET_URL_TEMPLATE(ParametersApp.specials);
 
 if(FOLDER_TEMPLATE_TO_CREATE !== null){
 	const TEMPLATE_PATH = `${__dirname}/templates/${FOLDER_TEMPLATE_TO_CREATE}`;
