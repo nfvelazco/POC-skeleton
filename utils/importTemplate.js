@@ -6,18 +6,18 @@ const consola = require(`./consola`);
 const mkdir = function(dir) {
 	// making directory without exception if exists
 	try {
-		fs.mkdirSync(dir, 0755);
+		fs.mkdirSync(dir, {recursive: true}, err => {})
+		// fs.mkdirSync(dir, 0755);
 	} catch(e) {
-        rmdir(dir);
+		rmdir(dir);
 		if(e.code != "EEXIST") {
-            
 			throw e;
 		}
 	}
 };
 
 const rmdir = function(dir) {
-	if (path.existsSync(dir)) {
+	if (fs.existsSync(dir)) {
 		var list = fs.readdirSync(dir);
 		for(var i = 0; i < list.length; i++) {
 			var filename = path.join(dir, list[i]);
@@ -67,8 +67,18 @@ const copyDir = function(src, dest) {
     }
     return files.length;
 };
-const run = (src,dest)=>{
-    copyDir(src,dest);
+const run = (src, template_path, templates)=> {
+	templates.forEach(template => {
+		let pathFrom = template_path + template.pathTemplate;
+		let pathTo = src + template.pathCopy;
+
+		if (!fs.existsSync(pathTo)) {
+			mkdir(pathTo);
+		}
+		
+		copyDir(pathFrom, pathTo);
+	});
+    //copyDir(src,dest);
     consola.warning(`Fin de la operación. A tirar alto codigo amigo...`);//${copyDir(src,dest)} archivos copiados.`)
 }
 module.exports = run;
