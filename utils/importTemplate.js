@@ -67,11 +67,18 @@ const copyDir = function(src, dest) {
     }
     return files.length;
 };
-const run = (src,dest)=> {
-	if (!fs.existsSync(dest)) {
-		mkdir(dest);
-	}
-    copyDir(src,dest);
+const run = (src, template_path, templates)=> {
+	templates.forEach(template => {
+		let pathFrom = template_path + template.pathTemplate;
+		let pathTo = src + template.pathCopy;
+
+		if (!fs.existsSync(pathTo)) {
+			mkdir(pathTo);
+		}
+		
+		copyDir(pathFrom, pathTo);
+	});
+    //copyDir(src,dest);
     consola.warning(`Fin de la operación. A tirar alto codigo amigo...`);//${copyDir(src,dest)} archivos copiados.`)
 }
 module.exports = run;

@@ -4,7 +4,7 @@ const TEMPLATES = require(`./proyectTemplate`);
 const PARAMETERS = require(`./parametrosEspeciales`);
 
 module.exports.GET_LIST_PARAMS = (lParameters) => {
-    return lParameters.filter(param => param.includes('--'));
+    return lParameters.filter(param => param.includes('--')).toLower().distinct();
 };
 
 module.exports.GET_URL_TEMPLATES = (lParameters) =>{
