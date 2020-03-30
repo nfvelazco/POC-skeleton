@@ -2,7 +2,7 @@
 /* MODULO DE MENSAJE DE AYUDA */
 const package = require('../package.json');
 
-const PARAM = require('./parametrosEspeciales.js');
+const PARAM = require('./parametrosEspeciales');
 
 const PACKAGE_NAME = package.name;
 const PACKAGE_README = package.homepage;
