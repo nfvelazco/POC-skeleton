@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -36,3 +36,55 @@
     transform: rotate(360deg);
   }
 }
+
+/* .container-route{
+  background-color: #161616;
+  position: relative;
+flex: 1;
+  overflow-y: hidden;
+} */
+
+.circularProgress{
+  color: #ffffff;
+  position: fixed;
+  top: 40%;
+  left: 46%;
+  z-index: 0;
+}
+
+.transition-group{
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.container-route{
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.container-route .fade-appear, 
+.container-route .fade-enter {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.container-route .fade-appear-done, 
+.container-route .fade-enter-done {
+  transition: 0.5s ease-in;
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.fade-exit{
+  transition: 0.5s ease-out;
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.fade-exit-active{
+  opacity: 0;
+  transform: translateY(100%);
+}
+

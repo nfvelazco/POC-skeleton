@@ -1,26 +1,16 @@
+import Header from './components/header';
+import RouterApp from './router/routerApp';
 import React from 'react';
-import logo from './logo.png';
 import './App.css';
 
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          POC Skeleton app React para Snoop
-        </p>
-        <a
-          className="App-link"
-          href="https://www.snoopconsulting.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Header/>
+			<RouterApp/>
+		</div>
+	);
 }
 
 export default App;
