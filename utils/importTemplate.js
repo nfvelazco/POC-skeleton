@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const util = require('util');
-const consola = require(`./consola`);
+const {
+	info,
+	warning,
+} = require(`./consola`);
 
 const mkdir = function(dir) {
 	// making directory without exception if exists
@@ -35,13 +37,13 @@ const rmdir = function(dir) {
 		}
 		fs.rmdirSync(dir);
 	} else {
-		consola.warning(`warn: ${dir} not exists`);
+		warning(`warn: ${dir} not exists`);
 	}
 };
 
 
 const copy = function(src, dest) {
-    consola.info(`${dest} - ok.`);
+    info(`${dest} - ok.`);
 	var oldFile = fs.createReadStream(src);
 	var newFile = fs.createWriteStream(dest);
     oldFile.pipe(newFile);
@@ -79,6 +81,6 @@ const run = (src, template_path, templates)=> {
 		copyDir(pathFrom, pathTo);
 	});
     //copyDir(src,dest);
-    consola.warning(`Fin de la operación. A tirar alto codigo amigo...`);//${copyDir(src,dest)} archivos copiados.`)
+    warning(`Fin de la operación. A tirar alto codigo amigo...`);//${copyDir(src,dest)} archivos copiados.`)
 }
 module.exports = run;

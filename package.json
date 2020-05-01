@@ -4,6 +4,7 @@
   "description": "Primer esqueleto de proyecto",
   "main": "./app.js",
   "dependencies": {
+    "download-git-repo": "^3.0.2",
     "fs": "0.0.1-security"
   },
   "devDependencies": {},

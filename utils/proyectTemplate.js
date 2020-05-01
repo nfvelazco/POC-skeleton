@@ -9,7 +9,7 @@ const PATH_NET_COMMON_FROM = 'Snoop.Common/';
 const PATH_NET_COMMON_TO = 'Snoop.Common';
 
 
-const CRA = new ProyectTemplate(PATH_CRA_FROM, PATH_FRONT + PATH_CRA_TO );
+const CRA = new ProyectTemplate(PATH_CRA_FROM, PATH_FRONT + PATH_CRA_TO);
 const NET_COMMON = new ProyectTemplate(PATH_NET_COMMON_FROM, PATH_BACK  + PATH_NET_COMMON_TO);
 
 module.exports.CRA = CRA;
